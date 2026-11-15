@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root { height: 100%; }
+
+@layer components {
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition disabled:opacity-50; }
+  .btn-primary { @apply bg-brand-500 text-white hover:bg-brand-600; }
+  .btn-ghost { @apply bg-ink-600 text-slate-200 hover:bg-ink-600/70; }
+  .input { @apply w-full rounded-lg border border-white/10 bg-ink-700 px-3 py-2 text-sm text-slate-100 placeholder-slate-500 outline-none focus:border-brand-500; }
+  .card { @apply rounded-xl bg-ink-800 border border-white/5; }
+}
+
+/* Slim range sliders for volume / progress */
+input[type='range'] { -webkit-appearance: none; appearance: none; background: transparent; height: 16px; cursor: pointer; }
+input[type='range']::-webkit-slider-runnable-track { height: 4px; border-radius: 9999px; background: linear-gradient(to right, #8b5cf6 var(--fill, 0%), #3a3a55 var(--fill, 0%)); }
+input[type='range']::-moz-range-track { height: 4px; border-radius: 9999px; background: #3a3a55; }
+input[type='range']::-moz-range-progress { height: 4px; border-radius: 9999px; background: #8b5cf6; }
+input[type='range']::-webkit-slider-thumb { -webkit-appearance: none; margin-top: -4px; height: 12px; width: 12px; border-radius: 9999px; background: #fff; }
+input[type='range']::-moz-range-thumb { height: 12px; width: 12px; border: 0; border-radius: 9999px; background: #fff; }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: #2a2a40; border-radius: 9999px; }
