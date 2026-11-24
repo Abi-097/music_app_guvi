@@ -1,0 +1,23 @@
+{
+  "name": "music-app",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "",
+  "scripts": {
+    "install:client": "npm --prefix client install",
+    "dev:server": "node --watch --env-file=.env server/src/index.js",
+    "dev:client": "npm --prefix client run dev",
+    "seed": "node --env-file=.env server/src/seed.js",
+    "build": "npm --prefix client install --include=dev && npm --prefix client run build"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.0",
+    "serverless-http": "^3.2.0"
+  },
+  "engines": { "node": ">=20" }
+}
