@@ -4,3 +4,4 @@ client/dist
 .env
 .env.example
 .netlify
+README.md
