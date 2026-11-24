@@ -10,6 +10,25 @@ const app = express();
 app.use(cors({ origin: process.env.CLIENT_ORIGIN || true }));
 app.use(express.json({ limit: '1mb' }));
 
+app.use((req, res, next) => {
+  if (!Buffer.isBuffer(req.body)) return next();
+  const raw = req.body.toString('utf8');
+  if (!raw) {
+    req.body = {};
+    return next();
+  }
+  if ((req.headers['content-type'] || '').includes('application/json')) {
+    try {
+      req.body = JSON.parse(raw);
+    } catch {
+      return res.status(400).json({ message: 'Invalid JSON body' });
+    }
+  } else {
+    req.body = {};
+  }
+  next();
+});
+
 const health = (_req, res) => res.json({ ok: true, db: !!process.env.MONGODB_URI });
 app.get(['/api/health', '/.netlify/functions/api/health'], health);
 
